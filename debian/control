@@ -3,13 +3,12 @@ Maintainer: Malin Randstrom <malin@randstrom.com>
 Section: python
 Priority: optional
 X-Python3-Version: >= 3.3
-Build-Depends: python3.3-dev (>= 3.3), python3.3 (>=3.3), debhelper (>= 9)
+Build-Depends: python3-dev (>= 3.2), python3 (>=3.2), debhelper (>= 9)
 Standards-Version: 3.9.3
 
-
 Package: python-posanal
-Architecture: all
+Architecture: any
 Section: python
-Depends: ${python3.3:Depends}, ${misc:Depends} 
+Depends: ${python3:Depends}, ${misc:Depends} 
 Description: Position analysis module for libreoffice calc
  Position analysis module for libreoffice calc
