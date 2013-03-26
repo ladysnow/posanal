@@ -1,7 +1,7 @@
 import sys
 sys.path.append('/usr/local/lib/python3.3/dist-packages')
 
-from .base import SpreadSheet
+from  ..utils import SpreadSheet
 
 import uno
 import unohelper

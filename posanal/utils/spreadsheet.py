@@ -5,6 +5,7 @@ The purpose of the abstract class is to be able to test outside libreoffice
 
 @author: malin
 '''
+
 from abc import abstractmethod 
 import sys
 
