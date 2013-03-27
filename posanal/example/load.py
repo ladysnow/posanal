@@ -8,14 +8,15 @@ import sys
 sys.path.append('/usr/local/lib/python3.3/dist-packages')
 
 
-from .utils.spreadsheet import SpreadSheet
-from .utils.helper import FrameworkHelper
-from .utils.table import TableManager
-from .utils.column import DecimalColumn as DEC
-from .utils.column import MoneyColumn as MON
-from .utils.column import TextColumn as TXT
-from .utils.column import FormulaColumn as FOR
-from .utils.column import DateColumn as DAT
+from ..utils.spreadsheet import SpreadSheet
+from ..utils.helper import FrameworkHelper
+from ..utils.table import TableManager
+from ..utils.column import DecimalColumn as DEC
+from ..utils.column import MoneyColumn as MON
+from ..utils.column import TextColumn as TXT
+from ..utils.column import FormulaColumn as FOR
+from ..utils.column import DateColumn as DAT
+from ..spreadsheet.libreoffice import LibreOffice 
 
 def writePositionsWitRealValues(x,y,fwh,sheet):
 
@@ -46,7 +47,7 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
 
 def writePositions(v):    
     
-    #oDoc = XSCRIPTCONTEXT.getDocument()
+    # sheet = LibreOffice(XSCRIPTCONTEXT.getDocument())
 
     sheet = SpreadSheet("")
     fwh = FrameworkHelper()
