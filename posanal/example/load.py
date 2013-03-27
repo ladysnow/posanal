@@ -16,7 +16,9 @@ from ..utils.column import MoneyColumn as MON
 from ..utils.column import TextColumn as TXT
 from ..utils.column import FormulaColumn as FOR
 from ..utils.column import DateColumn as DAT
-from ..spreadsheet.libreoffice import LibreOffice 
+
+from ..utils.spreadsheet import SpreadSheet 
+from ..libreoffice.spreadsheet import LibreSpreadSheet 
 
 def writePositionsWitRealValues(x,y,fwh,sheet):
 
@@ -47,7 +49,7 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
 
 def writePositions(v):    
     
-    # sheet = LibreOffice(XSCRIPTCONTEXT.getDocument())
+    # sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
 
     sheet = SpreadSheet("")
     fwh = FrameworkHelper()

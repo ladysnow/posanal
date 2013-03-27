@@ -1,7 +1,7 @@
 import sys
 sys.path.append('/usr/local/lib/python3.3/dist-packages')
 
-from  ..utils import SpreadSheet
+from  ..utils.spreadsheet import SpreadSheet 
 
 import uno
 import unohelper
@@ -10,7 +10,7 @@ from com.sun.star.script.provider import XScriptProvider
 from com.sun.star.script.provider import XScriptContext 
 from com.sun.star.lang import Locale as sLocale
 
-class LibreOffice(SpreadSheet):
+class LibreSpreadSheet(SpreadSheet):
     def __init__(self,oDoc):
         self.oDoc = oDoc
         self.libreSheet = self.oDoc.CurrentController.getActiveSheet()
