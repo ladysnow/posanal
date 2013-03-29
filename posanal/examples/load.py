@@ -15,6 +15,10 @@ from posanal.utils.column import FormulaColumn as FOR
 from posanal.utils.column import DateColumn as DAT
 from posanal.utils.spreadsheet import SpreadSheet 
 
+#from com.sun.star.script.provider import XScriptProviderFactory
+#rom com.sun.star.script.provider import XScriptProvider
+#from com.sun.star.script.provider import XScriptContext 
+
 
 def writePositionsWitRealValues(x,y,fwh,sheet):
 
@@ -47,7 +51,7 @@ def writePositions(v):
 
     if (v == True):    
         from posanal.libreoffice.spreadsheet import LibreSpreadSheet 
-        sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
+    #    sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
     else:
         sheet = SpreadSheet("")
     fwh = FrameworkHelper()

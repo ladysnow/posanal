@@ -53,4 +53,4 @@ class LibreSpreadSheet(SpreadSheet):
             return self.oDoc.NumberFormats.addNew(format,sLocale())
         return key    
 
-def test():
+
