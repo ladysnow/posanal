@@ -26,9 +26,8 @@ def echo(msg=''):
 #readme = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
 
-def run_setup():
-    features = {}
-    setup(
+
+setup(
         name='posanal',
         version='0.1',
         url='http://www.randstrom.com/',
@@ -48,9 +47,4 @@ def run_setup():
                            ],
     )
 
-try:
-    run_setup()
-except BuildFailed:
-    echo('Failure information, if any, is above.')
-    echo()
 
