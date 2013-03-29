@@ -42,7 +42,9 @@ def run_setup():
                     'posanal/utils/column',
                     'posanal/utils/spreadsheet',
                     'posanal/utils/helper',
-                    'posanal/utils/formula'],
+                    'posanal/utils/formula',
+                    'posanal/libreoffice/spreadsheet',
+                    'posanal/examples/load'],
         classifiers = [
                            'Intended Audience :: Developers',
                            'Intended Audience :: Information Technology',

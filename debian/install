@@ -1,8 +1,0 @@
-load.py		~/.config/libreoffice/4/user/Scripts/python/
-utils/table.py	     /usr/lib/python3.3/dist-packages/
-utils/column.py      /usr/lib/python3.3/dist-packages/
-utils/formula.py     /usr/lib/python3.3/dist-packages/
-utils/helper.py      /usr/lib/python3.3/dist-packages/
-spreadsheet/libreOffice.py 
-spreadsheet/interface.py
-spreadsheet/

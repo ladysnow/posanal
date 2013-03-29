@@ -6,19 +6,15 @@ Created on 22 Mar 2013
 
 import sys
 sys.path.append('/usr/local/lib/python3.3/dist-packages')
+from posanal.utils.helper import FrameworkHelper
+from posanal.utils.table import TableManager
+from posanal.utils.column import DecimalColumn as DEC
+from posanal.utils.column import MoneyColumn as MON
+from posanal.utils.column import TextColumn as TXT
+from posanal.utils.column import FormulaColumn as FOR
+from posanal.utils.column import DateColumn as DAT
+from posanal.utils.spreadsheet import SpreadSheet 
 
-
-from ..utils.spreadsheet import SpreadSheet
-from ..utils.helper import FrameworkHelper
-from ..utils.table import TableManager
-from ..utils.column import DecimalColumn as DEC
-from ..utils.column import MoneyColumn as MON
-from ..utils.column import TextColumn as TXT
-from ..utils.column import FormulaColumn as FOR
-from ..utils.column import DateColumn as DAT
-
-from ..utils.spreadsheet import SpreadSheet 
-from ..libreoffice.spreadsheet import LibreSpreadSheet 
 
 def writePositionsWitRealValues(x,y,fwh,sheet):
 
@@ -48,17 +44,18 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
     return tm.rowCount() 
 
 def writePositions(v):    
-    
-    # sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
 
-    sheet = SpreadSheet("")
+    if (v == True):    
+        from posanal.libreoffice.spreadsheet import LibreSpreadSheet 
+        sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
+    else:
+        sheet = SpreadSheet("")
     fwh = FrameworkHelper()
     fwh.connect("malin","katten3","192.168.1.2","mydb")    
     r = writePositionsWitRealValues(3,2,fwh,sheet)
     
     return None
 
-writePositions(1)
 
 
 
