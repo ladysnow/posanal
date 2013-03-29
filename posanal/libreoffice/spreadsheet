@@ -54,4 +54,3 @@ class LibreSpreadSheet(SpreadSheet):
         return key    
 
 def test():
-    print("test")
