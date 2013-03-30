@@ -49,9 +49,9 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
 
 def writePositions(v):    
 
-    if (v == True):    
+    if (v == True):   
         from posanal.libreoffice.spreadsheet import LibreSpreadSheet 
-    #    sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
+        sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
     else:
         sheet = SpreadSheet("")
     fwh = FrameworkHelper()
