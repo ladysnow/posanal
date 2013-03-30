@@ -1,5 +1,4 @@
 import sys
-sys.path.append('/usr/local/lib/python3.3/dist-packages')
 
 from  ..utils.spreadsheet import SpreadSheet 
 

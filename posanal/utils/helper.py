@@ -4,7 +4,7 @@ Created on 22 Mar 2013
 @author: malin
 '''
 import sys
-sys.path.append('/usr/local/lib/python3.3/dist-packages')
+sys.path.append("/usr/local/lib/python3.3/dist-packages")
 import mysql.connector
 
 class FrameworkHelper:

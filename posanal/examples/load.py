@@ -5,7 +5,7 @@ Created on 22 Mar 2013
 '''
 
 import sys
-sys.path.append('/usr/local/lib/python3.3/dist-packages')
+sys.path.append("/usr/lib/python3/dist-packages")
 from posanal.utils.helper import FrameworkHelper
 from posanal.utils.table import TableManager
 from posanal.utils.column import DecimalColumn as DEC
@@ -48,8 +48,9 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
     return tm.rowCount() 
 
 def writePositions(v):    
-
-    if (v == True):   
+    
+    if (v != 0):
+        print("")   
         from posanal.libreoffice.spreadsheet import LibreSpreadSheet 
         sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
     else:
@@ -60,6 +61,7 @@ def writePositions(v):
     
     return None
 
+writePositions(False)
 
 
 

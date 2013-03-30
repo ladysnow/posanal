@@ -4,8 +4,6 @@ Created on 22 Mar 2013
 @author: malin
 '''
 import sys
-sys.path.append('/home/malin/.config/libreoffice/4/user/Scripts/python/utils')
-
 
 from .formula import Coordinates
 

@@ -5,9 +5,6 @@ Created on 22 Mar 2013
 '''
 
 from abc import ABCMeta, abstractmethod 
-import sys
-sys.path.append('/usr/local/lib/python3.3/dist-packages')
-
 from .formula import spreadSheetFormula
 from .formula import Coordinates
 
