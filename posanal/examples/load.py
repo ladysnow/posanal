@@ -16,7 +16,7 @@ from posanal.utils.column import TextColumn as TXT
 from posanal.utils.column import FormulaColumn as FOR
 from posanal.utils.column import DateColumn as DAT
 from posanal.utils.spreadsheet import SpreadSheet 
-from posanal.utils.log import info, log, debug
+from posanal.utils.log import info, warning, error, log, debug
 
 #from com.sun.star.script.provider import XScriptProviderFactory
 #rom com.sun.star.script.provider import XScriptProvider
@@ -56,9 +56,8 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
 
 def writePositions(x):    
     
-    debug.active = True
     info.active = True
-    log.stdout = True
+    warning.active = True
     log.file = True
     log.file = "/home/malin/log/posanal"
     
