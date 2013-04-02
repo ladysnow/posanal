@@ -7,6 +7,7 @@ Created on 22 Mar 2013
 from abc import ABCMeta, abstractmethod 
 from .formula import spreadSheetFormula
 from .formula import Coordinates
+from .log import debug
 
 class TableManagerException(BaseException):
     def __init__(self,arg):
@@ -43,10 +44,7 @@ class Column(object):
             sheet.setCell(self.getX()+x,self.getY()+y)
 
     def write(self,row, sheet):
-        self.setCell(sheet)
-        if (len(self.fmt) > 0):
-            sheet.setFormat(self.fmt) 
-       
+        self.setCell(sheet)      
         if (self.key in row): 
             self.writeCell(sheet, self.coords, row[self.key])
         else:
@@ -66,26 +64,32 @@ class Column(object):
 
     def writeSum(self,sheet):
         formula = "SUM(" + self.coords.getRange() + ")"
-        self.setCellAdjusted(sheet,1,0)
+        self.setCellAdjusted(sheet,0,0)
         sheet.setCharWeight("BOLD")
+        sheet.setFormat(self.fmt)
         sheet.setFormula("=" + spreadSheetFormula(Coordinates(0,0,0,0), formula))
         self.nFootings +=1
   
 class DecimalColumn(Column):
     def __init__(self,label,dbColName,fmt):
+        if (len(fmt)  < 1):
+            fmt = '###.###'
         super(DecimalColumn,self).__init__(label,dbColName,fmt)
 
-    def writeCell(self,sheet, cords, value):        
+    def writeCell(self,sheet, cords, value): 
+        sheet.setFormat(self.fmt)       
         sheet.setValue(float(value))
         return True
 
 class MoneyColumn(Column):
     def __init__(self,label,dbColName,fmt):
-        if (len(fmt) == 0):
-            fmt = "#,###,###"
+        if (len(fmt) < 1):
+            fmt = '#,###,###'
         super(MoneyColumn,self).__init__(label,dbColName,fmt)
 
-    def writeCell(self,sheet, cords, value):        
+    def writeCell(self,sheet, cords, value):
+        debug("MoneyColumn.writeCell") 
+        sheet.setFormat(self.fmt)       
         sheet.setValue(float(value))
         return True
 
@@ -102,18 +106,20 @@ class TextColumn(Column):
     def __init__(self, label, dbColName, fmt):
         super(TextColumn,self).__init__(label,dbColName,fmt)
 
-    def writeCell(self,sheet, cords, value):        
+    def writeCell(self,sheet, cords, value):    
+        debug("TextColumn.writeCell")
         sheet.setHoriJustify("LEFT")
         sheet.setString(value)
         return True
 
 class FormulaColumn(Column):
     def __init__(self, label, formula, fmt):
-        if (len(fmt) == 0):
+        if (len(fmt) < 1):
             fmt = "#,###,###"
         super(FormulaColumn,self).__init__(label,formula,fmt)
 
     def writeCell(self,sheet, coords, formula):
+        sheet.setFormat(self.fmt)
         sheet.setHoriJustify("LEFT")
         sheet.setFormula("="+ spreadSheetFormula(coords, str(formula)))
         return None

@@ -5,7 +5,9 @@ Created on 22 Mar 2013
 '''
 
 import sys
-sys.path.append("/usr/lib/python3/dist-packages")
+#sys.path.append("/usr/lib/python3/dist-packages")
+sys.path.append("/home/malin/work/posanal")
+
 from posanal.utils.helper import FrameworkHelper
 from posanal.utils.table import TableManager
 from posanal.utils.column import DecimalColumn as DEC
@@ -14,6 +16,7 @@ from posanal.utils.column import TextColumn as TXT
 from posanal.utils.column import FormulaColumn as FOR
 from posanal.utils.column import DateColumn as DAT
 from posanal.utils.spreadsheet import SpreadSheet 
+from posanal.utils.log import info, log, debug
 
 #from com.sun.star.script.provider import XScriptProviderFactory
 #rom com.sun.star.script.provider import XScriptProvider
@@ -30,8 +33,8 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
                 DEC("Andel",      "position",    ""),\
                 DAT("Startdag",   "startDate",   ""),\
                 DAT("Kursdag",    "valueDate",   ""),\
-                MON("Startkurs",  "startValue",  ""),\
-                MON("Dagskurs",   "value",       ""),\
+                DEC("Startkurs",  "startValue",  ""),\
+                DEC("Dagskurs",   "value",       ""),\
                 FOR("Startvärde", "{1,@}*{4,@}", ""),\
                 FOR("Dagsvärde",  "{1,@}*{5,@}", ""),\
                 FOR("Förändring", "{7,@}-{6,@}", "")\
@@ -40,26 +43,46 @@ def writePositionsWitRealValues(x,y,fwh,sheet):
     sums = [("Dagsvärde"),("Startvärde"),("Förändring")]                                                
 
     tm = TableManager(x,y,sheet)
-    tm.initialize(colDefs)    
+    info("initialize")
+    tm.initialize(colDefs)
+    info("writeHeading")    
     tm.writeHeading()
+    info("exccuteData")
     fwh.executeData(query,tm)
+    info("writeSums")
     tm.writeSums(sums)
 
     return tm.rowCount() 
 
-def writePositions(v):    
+def writePositions(x):    
     
-    if (v != 0):
-        print("")   
-        from posanal.libreoffice.spreadsheet import LibreSpreadSheet 
+    debug.active = True
+    info.active = True
+    log.stdout = True
+    log.file = True
+    log.file = "/home/malin/log/posanal"
+    
+    sheet=0
+    
+    if (1):
+        info("import")   
+        from posanal.libre.spreadsheet import LibreSpreadSheet
+        info("XSCRIPT")   
         sheet = LibreSpreadSheet(XSCRIPTCONTEXT.getDocument())
+        info("done")   
     else:
         sheet = SpreadSheet("")
+        
     fwh = FrameworkHelper()
-    fwh.connect("malin","katten3","192.168.1.2","mydb")    
-    r = writePositionsWitRealValues(3,2,fwh,sheet)
+    info("Connect")
+    fwh.connect("malin","katten3","192.168.1.2","mydb")
+    info("fill positions")    
+    r = writePositionsWitRealValues(1,1,fwh,sheet)
+    
+    info("done")
     
     return None
+
 
 writePositions(False)
 

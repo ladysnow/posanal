@@ -23,7 +23,7 @@ setup(
         author_email='malin@randstrom.com',
         description='Position analysis module for libreoffice calc',
         long_description="Position analysis module for libreoffice calc",
-        packages=['posanal','posanal/utils','posanal/libre','posanal/examples']
+        packages=['posanal']
     )
 
 

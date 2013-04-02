@@ -6,6 +6,7 @@ Created on 22 Mar 2013
 import sys
 
 from .formula import Coordinates
+from .log import log
 
 class TableManager:
     def __init__(self,x,y, sheet):

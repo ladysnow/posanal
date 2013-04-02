@@ -31,5 +31,6 @@ class FrameworkHelper:
             print("Exception " + str(err))
             sys.exit(0)
 
+
 def test(self):
     print("test")
