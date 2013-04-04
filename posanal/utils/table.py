@@ -30,7 +30,7 @@ class TableManager:
             nRows = cd.getTotalRows() 
             if (nRows > maxRows):
                 maxRows = nRows
-            return max
+            return maxRows
         
     def columnCount(self):
             return (len(self.colDefs))

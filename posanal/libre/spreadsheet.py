@@ -12,9 +12,9 @@ from com.sun.star.lang import Locale as sLocale
 
 
 class LibreSpreadSheet(SpreadSheet):
-    def __init__(self,oDoc):
-        self.oDoc = oDoc
-        self.sheet = self.oDoc.CurrentController.getActiveSheet()
+    def __init__(self, oDoc):
+        self.oDoc = oDoc 
+        self.sheet = oDoc.CurrentController.getActiveSheet()
         self.cell = 0
 
     def setCell(self,x,y):

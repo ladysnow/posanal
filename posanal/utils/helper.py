@@ -7,6 +7,10 @@ import sys
 sys.path.append("/usr/local/lib/python3.3/dist-packages")
 import mysql.connector
 
+from .log import info, debug
+from .table import TableManager
+from abc import abstractmethod 
+
 class FrameworkHelper:
     def __init__(self):
         self.stuff =1
@@ -31,6 +35,30 @@ class FrameworkHelper:
             print("Exception " + str(err))
             sys.exit(0)
 
+
+class TableDef(object):
+
+    def execute(self,fwh, sheet, x,y):
+        tm = TableManager(x,y,sheet)
+        info("initialize")
+        tm.initialize(self.columns())
+        info("writeHeading")    
+        tm.writeHeading()
+        info("exccuteData")
+        fwh.executeData(self.query(),tm)
+        info("writeSums")
+        tm.writeSums(self.sums())
+        return tm.rowCount() 
+        
+    @abstractmethod
+    def query(self):
+        pass
+    @abstractmethod
+    def columns(self):
+        pass
+    @abstractmethod
+    def sums(self):
+        pass
 
 def test(self):
     print("test")
